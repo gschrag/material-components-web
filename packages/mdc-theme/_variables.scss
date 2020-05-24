@@ -23,6 +23,7 @@
 @use "sass:map";
 @use "sass:meta";
 @use "./functions";
+@use "./custom-properties";
 
 //
 // Main theme colors for your brand.
@@ -131,8 +132,8 @@ $property-values: (
 //
 // NOTE: This function must be defined in _variables.scss instead of _functions.scss to avoid circular imports.
 @function prop-value($style) {
-  @if functions.is-var-with-fallback_($style) {
-    @return functions.get-var-fallback_($style);
+  @if custom-properties.is-custom-prop($style) {
+    @return custom-properties.get-fallback($style);
   }
 
   @if is-valid-theme-prop-value_($style) {
