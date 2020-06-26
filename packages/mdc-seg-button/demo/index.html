@@ -30,71 +30,179 @@ THE SOFTWARE.
 <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
 
 
+<table style="width: 100%; border-spacing: 20px;">
+    <tr>
+        <td>
+            <h1 style="margin: 0">Multi</h1>
+        </td>
+        <td>
+            <div class="mdc-segmented-button">
+                <!-- <div class="mdc-touch-target-wrapper"> -->
+                    <button class="mdc-segmented-button__segment mdc-segmented-button--touch">
+                        <div class="mdc-segmented-button__ripple"></div>
+                        <i class="material-icons mdc-segmented-button__icon">favorite</i>
+                        <div class="mdc-segmented-button__touch"></div>
+                    </button>
+                <!-- </div> -->
+                <!-- <div class="mdc-touch-target-wrapper"> -->
+                    <button class="mdc-segmented-button__segment mdc-segmented-button--touch">
+                        <div class="mdc-segmented-button__ripple"></div>
+                        <div class="mdc-segmented-button__label">Text</div>
+                        <div class="mdc-segmented-button__touch"></div>
+                    </button>
+                <!-- </div> -->
+                <!-- <div class="mdc-touch-target-wrapper"> -->
+                    <button class="mdc-segmented-button__segment mdc-segmented-button--touch">
+                        <div class="mdc-segmented-button__ripple"></div>
+                        <i class="material-icons mdc-segmented-button__icon">android</i>
+                        <div class="mdc-segmented-button__label">Label</div>
+                        <div class="mdc-segmented-button__touch"></div>
+                    </button>
+                <!-- </div> -->
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h1 style="margin: 0">Single</h1>
+        </td>
+        <td>
+            <div class="mdc-segmented-button mdc-segmented-button--single-select">
+                <!-- <div class="mdc-touch-target-wrapper"> -->
+                    <button class="mdc-segmented-button__segment mdc-segmented-button--touch">
+                        <div class="mdc-segmented-button__ripple"></div>
+                        <i class="material-icons mdc-segmented-button__icon">favorite</i>
+                        <div class="mdc-segmented-button__touch"></div>
+                    </button>
+                <!-- </div> -->
+                <!-- <div class="mdc-touch-target-wrapper"> -->
+                    <button class="mdc-segmented-button__segment mdc-segmented-button--touch">
+                        <div class="mdc-segmented-button__ripple"></div>
+                        <div class="mdc-segmented-button__label">Text</div>
+                        <div class="mdc-segmented-button__touch"></div>
+                    </button>
+                <!-- </div> -->
+                <!-- <div class="mdc-touch-target-wrapper"> -->
+                    <button class="mdc-segmented-button__segment mdc-segmented-button--touch">
+                        <div class="mdc-segmented-button__ripple"></div>
+                        <i class="material-icons mdc-segmented-button__icon">android</i>
+                        <div class="mdc-segmented-button__label">Label</div>
+                        <div class="mdc-segmented-button__touch"></div>
+                    </button>
+                <!-- </div> -->
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h1 style="margin: 0">Baseline</h1>
+        </td>
+        <td>
+            <div class="mdc-segmented-button">
+                <button class="mdc-segmented-button__segment mdc-segmented-button__segment--selected">
+                    <div class="mdc-segmented-button__label">Segment</div>
+                </button>
+                <button class="mdc-segmented-button__segment">
+                    <div class="mdc-segmented-button__label">Segment</div>
+                </button>
+                <button class="mdc-segmented-button__segment">
+                    <div class="mdc-segmented-button__label">Segment</div>
+                </button>
+            </div>
+        </td>
+    </tr>
+</table>
 
-<div style="float: left; width: 50%;">
-    <h1>Mutli</h1>
+
+
+<!-- <div>
+    <h1 style="margin-bottom: 0;">
+        Mutli
+        <hr style="height: 2px; border-width: 0; color: gray; background-color: gray; width: 25%; margin-left: 0;">
+    </h1>
 
 
     <div class="mdc-segmented-button">
-        <!-- <div class="mdc-touch-target-wrapper"> -->
+        <div class="mdc-touch-target-wrapper">
             <button class="mdc-segmented-button__segment mdc-segmented-button--touch">
                 <div class="mdc-segmented-button__ripple"></div>
                 <i class="material-icons mdc-segmented-button__icon">favorite</i>
                 <div class="mdc-segmented-button__touch"></div>
             </button>
-        <!-- </div> -->
-        <!-- <div class="mdc-touch-target-wrapper"> -->
+        </div>
+        <div class="mdc-touch-target-wrapper">
             <button class="mdc-segmented-button__segment mdc-segmented-button--touch">
                 <div class="mdc-segmented-button__ripple"></div>
                 <div class="mdc-segmented-button__label">Text</div>
                 <div class="mdc-segmented-button__touch"></div>
             </button>
-        <!-- </div> -->
-        <!-- <div class="mdc-touch-target-wrapper"> -->
+        </div>
+        <div class="mdc-touch-target-wrapper">
             <button class="mdc-segmented-button__segment mdc-segmented-button--touch">
                 <div class="mdc-segmented-button__ripple"></div>
                 <i class="material-icons mdc-segmented-button__icon">android</i>
                 <div class="mdc-segmented-button__label">Label</div>
                 <div class="mdc-segmented-button__touch"></div>
             </button>
-        <!-- </div> -->
+        </div>
     </div>
 
 
 
 </div>
 
-<div style="float: left; width: 50%;">    
-    <h1>Single</h1>
+<div>
+    <h1 style="margin-bottom: 0;">Single</h1>
 
+    <hr style="height: 2px; border-width: 0; color: gray; background-color: gray;">
 
     <div class="mdc-segmented-button mdc-segmented-button--single-select">
-        <!-- <div class="mdc-touch-target-wrapper"> -->
+        <div class="mdc-touch-target-wrapper">
             <button class="mdc-segmented-button__segment mdc-segmented-button--touch">
                 <div class="mdc-segmented-button__ripple"></div>
                 <i class="material-icons mdc-segmented-button__icon">favorite</i>
                 <div class="mdc-segmented-button__touch"></div>
             </button>
-        <!-- </div> -->
-        <!-- <div class="mdc-touch-target-wrapper"> -->
+        </div>
+        <div class="mdc-touch-target-wrapper">
             <button class="mdc-segmented-button__segment mdc-segmented-button--touch">
                 <div class="mdc-segmented-button__ripple"></div>
                 <div class="mdc-segmented-button__label">Text</div>
                 <div class="mdc-segmented-button__touch"></div>
             </button>
-        <!-- </div> -->
-        <!-- <div class="mdc-touch-target-wrapper"> -->
+        </div>
+        <div class="mdc-touch-target-wrapper">
             <button class="mdc-segmented-button__segment mdc-segmented-button--touch">
                 <div class="mdc-segmented-button__ripple"></div>
                 <i class="material-icons mdc-segmented-button__icon">android</i>
                 <div class="mdc-segmented-button__label">Label</div>
                 <div class="mdc-segmented-button__touch"></div>
             </button>
-        <!-- </div> -->
+        </div>
     </div>
 
 
 </div>
+
+
+<div>
+    <h1 style="margin-bottom: 0;">Baseline</h1>
+
+    <hr style="height: 2px; border-width: 0; color: gray; background-color: gray;">
+
+
+    <div class="mdc-segmented-button">
+        <button class="mdc-segmented-button__segment mdc-segmented-button__segment--selected">
+            <div class="mdc-segmented-button__label">Segment</div>
+        </button>
+        <button class="mdc-segmented-button__segment">
+            <div class="mdc-segmented-button__label">Segment</div>
+        </button>
+        <button class="mdc-segmented-button__segment">
+            <div class="mdc-segmented-button__label">Segment</div>
+        </button>
+    </div>
+</div> -->
 
 
 <script type="module" src="index.ts"></script>
