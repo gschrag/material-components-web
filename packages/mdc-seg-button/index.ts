@@ -110,6 +110,12 @@ export class MDCSegmentedButtonSegment {
         } else {
             this.removeClass('mdc-segmented-button__segment--selected');
         }
+
+        if (this.getAttr('role') === 'radio') {
+            this.setAttr('aria-checked', selected.toString());
+        } else {
+            this.setAttr('aria-pressed', selected.toString());
+        }
     }
 
     handleClick = () => {
@@ -128,6 +134,14 @@ export class MDCSegmentedButtonSegment {
 
     removeClass(className: string) {
         this.root.classList.remove(className);
+    }
+
+    setAttr(name: string, value: string) {
+        this.root.setAttribute(name, value);
+    }
+
+    getAttr(name: string): string | null {
+        return this.root.getAttribute(name);
     }
 
     getElement() {
