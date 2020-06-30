@@ -20,18 +20,4 @@
 // THE SOFTWARE.
 //
 
-// CSS: Emit CSS required to style component
-
-<<<<<<< HEAD
-@use './segmented-button/segmented-button';
-@use './segment/segment';
-@use './segment/segment-ripple';
-
-@include segmented-button.core-styles();
-@include segment.core-styles();
-@include segment-ripple.ripple();
-=======
-@use './segment/mdc-segmented-button__segment';
-
-@include mdc-segmented-button__segment.core_styles();
->>>>>>> refactor: split sass into appropriate files
+// Theme: Variables, functions, and mixins required to theme component

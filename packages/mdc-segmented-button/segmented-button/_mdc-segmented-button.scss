@@ -20,18 +20,13 @@
 // THE SOFTWARE.
 //
 
-// CSS: Emit CSS required to style component
+// Core: Define complete styles to render component, including base and theme styles
 
-<<<<<<< HEAD
-@use './segmented-button/segmented-button';
-@use './segment/segment';
-@use './segment/segment-ripple';
+@use './mdc-segmented-button-theme';
 
-@include segmented-button.core-styles();
-@include segment.core-styles();
-@include segment-ripple.ripple();
-=======
-@use './segment/mdc-segmented-button__segment';
-
-@include mdc-segmented-button__segment.core_styles();
->>>>>>> refactor: split sass into appropriate files
+@mixin core-styles() {
+  .mdc-segmented-button {
+    font-size: 0;
+    display: inline-block;
+  }
+}
