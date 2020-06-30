@@ -20,4 +20,19 @@
 // THE SOFTWARE.
 //
 
-// Theme: Variables, functions, and mixins required to theme component
+// Core: Define complete styles to render component, including base and theme styles
+
+@use '@material/feature-targeting/feature-targeting';
+@use './segmented-button-theme';
+
+@mixin core-styles($query: feature-targeting.all()) {
+  .mdc-segmented-button {
+    $feat-structure: feature-targeting.create-target($query, structure);
+
+    @include feature-targeting.targets($feat-structure) {
+      display: inline-block;
+      // Removes spacing between segments
+      font-size: 0;
+    }
+  }
+}
