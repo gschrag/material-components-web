@@ -14,10 +14,17 @@
     "directory": "packages/mdc-seg-button"
   },
   "dependencies": {
+    "@material/base": "^7.0.0",
     "@material/button": "^6.0.0",
-    "@material/theme": "^6.0.0"
+    "@material/theme": "^6.0.0",
+    "@material/feature-targeting": "^7.0.0",
+    "@material/typography": "^7.0.0"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "devDependencies": {
+    "cssnano": "^4.1.10",
+    "sass": "^1.26.10"
   }
 }

@@ -21,13 +21,18 @@
  * THE SOFTWARE.
  */
 
-import { MDCSegmentedButton } from '../index';
+/**
+ * String constants used by segmented-button
+ */
+export const strings = {
+  SEGMENT_SELECTOR: '.mdc-segmented-button__segment',
+  SELECTED_EVENT: 'selected',
+  CHANGE_EVENT: 'change'
+};
 
-const mdcSegmentedButtonEls = document.querySelectorAll<HTMLElement>('.mdc-segmented-button');
-const segmentedButtons = []
-
-if (mdcSegmentedButtonEls) {
-    mdcSegmentedButtonEls.forEach((mdcSegmentedButtonEl: HTMLElement) => {
-        segmentedButtons.push(MDCSegmentedButton.attachTo(mdcSegmentedButtonEl));
-    });
-}
+/**
+ * Style classes for segmented-button
+ */
+export const cssClasses = {
+  SINGLE_SELECT: 'mdc-segmented-button--single-select'
+};

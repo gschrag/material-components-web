@@ -21,13 +21,20 @@
  * THE SOFTWARE.
  */
 
-import { MDCSegmentedButton } from '../index';
+ /**
+ * Event detail triggered by a click on a segment. This event detail is used
+ * to alert the segment-button to the change and trigger a DOM event.
+ */
+ export interface SegmentDetail {
+   index: number;
+   selected: boolean;
+   segmentId?: string;
+ }
 
-const mdcSegmentedButtonEls = document.querySelectorAll<HTMLElement>('.mdc-segmented-button');
-const segmentedButtons = []
-
-if (mdcSegmentedButtonEls) {
-    mdcSegmentedButtonEls.forEach((mdcSegmentedButtonEl: HTMLElement) => {
-        segmentedButtons.push(MDCSegmentedButton.attachTo(mdcSegmentedButtonEl));
-    });
-}
+ /**
+ * Event emitted by segment to alert the segment-button of a change in its
+ * selected status.
+ */
+ export interface MDCSegmentedButtonEvent extends Event {
+   readonly detail: SegmentDetail;
+ }

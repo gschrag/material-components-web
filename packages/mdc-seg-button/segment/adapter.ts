@@ -21,13 +21,18 @@
  * THE SOFTWARE.
  */
 
-import { MDCSegmentedButton } from '../index';
+export interface MDCSegmentedButtonSegmentAdapter {
+  isSingleSelect(): boolean;
+  
+  getAttr(attrName: string): string | null;
 
-const mdcSegmentedButtonEls = document.querySelectorAll<HTMLElement>('.mdc-segmented-button');
-const segmentedButtons = []
+  setAttr(attrName: string, value: string): void;
 
-if (mdcSegmentedButtonEls) {
-    mdcSegmentedButtonEls.forEach((mdcSegmentedButtonEl: HTMLElement) => {
-        segmentedButtons.push(MDCSegmentedButton.attachTo(mdcSegmentedButtonEl));
-    });
+  addClass(className: string): void;
+
+  removeClass(className: string): void;
+
+  hasClass(className: string): boolean;
+
+  notifySelectedChange(selected: boolean): void;
 }

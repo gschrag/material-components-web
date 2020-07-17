@@ -21,13 +21,6 @@
  * THE SOFTWARE.
  */
 
-import { MDCSegmentedButton } from '../index';
-
-const mdcSegmentedButtonEls = document.querySelectorAll<HTMLElement>('.mdc-segmented-button');
-const segmentedButtons = []
-
-if (mdcSegmentedButtonEls) {
-    mdcSegmentedButtonEls.forEach((mdcSegmentedButtonEl: HTMLElement) => {
-        segmentedButtons.push(MDCSegmentedButton.attachTo(mdcSegmentedButtonEl));
-    });
-}
+export * from './adapter';
+export * from './foundation';
+export * from './component';
