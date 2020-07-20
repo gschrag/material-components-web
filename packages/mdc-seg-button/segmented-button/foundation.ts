@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-import {MDCFoundation} from '../../mdc-base/foundation';
+import {MDCFoundation} from '@material/base/foundation';
 import {MDCSegmentedButtonAdapter} from './adapter';
 import {SegmentDetail} from '../types';
 import {cssClasses} from './constants';

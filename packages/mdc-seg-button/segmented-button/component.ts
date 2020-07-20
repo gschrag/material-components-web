@@ -21,8 +21,8 @@
  * THE SOFTWARE.
  */
 
-import {MDCComponent} from '../../mdc-base/component';
-import {CustomEventListener} from '../../mdc-base/types';
+import {MDCComponent} from '@material/base/component';
+import {CustomEventListener} from '@material/base/types';
 import {MDCSegmentedButtonSegment, MDCSegmentedButtonSegmentFactory} from '../segment/component';
 import {SegmentDetail, MDCSegmentedButtonEvent} from '../types';
 import {MDCSegmentedButtonAdapter} from './adapter';

@@ -35,4 +35,6 @@ export interface MDCSegmentedButtonSegmentAdapter {
   hasClass(className: string): boolean;
 
   notifySelectedChange(selected: boolean): void;
+
+  getRootBoundingClientRect(): ClientRect;
 }

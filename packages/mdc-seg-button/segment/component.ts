@@ -21,13 +21,14 @@
  * THE SOFTWARE.
  */
 
-import {MDCComponent} from '../../mdc-base/component';
-import {SpecificEventListener} from '../../mdc-base/types';
-// TODO: use this to allow ripple usage
-// import {MDCRippleAdapter} from '../../mdc-ripple/adapter';
-// import {MDCRipple, MDCRippleFactory} from '../../mdc-ripple/component';
-// import {MDCRippleFoundation} from '../../mdc-ripple/foundation';
-import {MDCRippleCapableSurface} from '../../mdc-ripple/types';
+import {MDCComponent} from '@material/base/component';
+import {SpecificEventListener} from '@material/base/types';
+// TODO: use this to allow ripple usage...why does chip use all this but not icon-button???
+import {MDCRippleAdapter} from '@material/ripple/adapter';
+import {MDCRipple, MDCRippleFactory} from '@material/ripple/component';
+// import {MDCRipple} from '@material/ripple/component';
+import {MDCRippleFoundation} from '@material/ripple/foundation';
+import {MDCRippleCapableSurface} from '@material/ripple/types';
 import {MDCSegmentedButtonSegmentAdapter} from './adapter';
 import {MDCSegmentedButtonSegmentFoundation} from './foundation';
 import {SegmentDetail} from '../types';
@@ -38,14 +39,33 @@ export type MDCSegmentedButtonSegmentFactory =
     MDCSegmentedButtonSegment;
 
 export class MDCSegmentedButtonSegment extends MDCComponent<MDCSegmentedButtonSegmentFoundation> implements MDCRippleCapableSurface {
+  get ripple(): MDCRipple {
+    return this.rippleComponent;
+  }
+  
   static attachTo(root: Element) {
     return new MDCSegmentedButtonSegment(root);
   }
 
   private index!: number; // assigned in setIndex by parent
   private isSingleSelect!: boolean; // assigned in setIsSingleSelect by parent
+  private rippleComponent!: MDCRipple; // assigned in initialize
   private handleClick!:
       SpecificEventListener<'click'>; // assigned in initialSyncWithDOM
+
+  initialize(
+    rippleFactory: MDCRippleFactory =
+      (el, foundation) => new MDCRipple(el, foundation)
+  ) {
+    const rippleAdapter: MDCRippleAdapter = {
+      ...MDCRipple.createAdapter(this),
+      computeBoundingRect: () => this.foundation.getDimensions()
+    };
+    this.rippleComponent =
+      rippleFactory(this.root, new MDCRippleFoundation(rippleAdapter));
+    // this.rippleComponent = new MDCRipple(this.root);
+    // this.rippleComponent.unbounded = true;
+  }
 
   initialSyncWithDOM() {
     this.handleClick = () => this.foundation.handleClick();
@@ -54,6 +74,8 @@ export class MDCSegmentedButtonSegment extends MDCComponent<MDCSegmentedButtonSe
   }
 
   destroy() {
+    this.ripple.destroy();
+
     this.unlisten(strings.CLICK_EVENT, this.handleClick);
 
     super.destroy();
@@ -89,6 +111,9 @@ export class MDCSegmentedButtonSegment extends MDCComponent<MDCSegmentedButtonSe
           },
           true /* shouldBubble */
         );
+      },
+      getRootBoundingClientRect: () => {
+        return this.root.getBoundingClientRect();
       }
     };
     return new MDCSegmentedButtonSegmentFoundation(adapter);

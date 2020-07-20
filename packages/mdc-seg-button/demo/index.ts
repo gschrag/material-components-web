@@ -22,6 +22,7 @@
  */
 
 import { MDCSegmentedButton } from '../index';
+// import { MDCRipple } from '@material/ripple';
 
 const mdcSegmentedButtonEls = document.querySelectorAll<HTMLElement>('.mdc-segmented-button');
 const segmentedButtons = []
@@ -29,5 +30,7 @@ const segmentedButtons = []
 if (mdcSegmentedButtonEls) {
     mdcSegmentedButtonEls.forEach((mdcSegmentedButtonEl: HTMLElement) => {
         segmentedButtons.push(MDCSegmentedButton.attachTo(mdcSegmentedButtonEl));
+        // const ripple = new MDCRipple(mdcSegmentedButtonEl);
+        // ripple.unbounded = true;
     });
 }

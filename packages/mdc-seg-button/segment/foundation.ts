@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-import {MDCFoundation} from '../../mdc-base/foundation';
+import {MDCFoundation} from '@material/base/foundation';
 import {MDCSegmentedButtonSegmentAdapter} from './adapter';
 import {cssClasses, strings} from './constants';
 
@@ -34,7 +34,8 @@ export class MDCSegmentedButtonSegmentFoundation extends MDCFoundation<MDCSegmen
       addClass: () => undefined,
       removeClass: () => undefined,
       hasClass: () => false,
-      notifySelectedChange: () => undefined
+      notifySelectedChange: () => undefined,
+      getRootBoundingClientRect: () => new ClientRect()
     }
   }
 
@@ -67,6 +68,10 @@ export class MDCSegmentedButtonSegmentFoundation extends MDCFoundation<MDCSegmen
       this.toggleSelection();
     }
     this.adapter.notifySelectedChange(this.isSelected());
+  }
+
+  getDimensions(): ClientRect {
+    return this.adapter.getRootBoundingClientRect();
   }
 
   private toggleSelection() {
