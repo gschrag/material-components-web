@@ -36,16 +36,13 @@ THE SOFTWARE.
         </td>
         <td>
             <div class="mdc-segmented-button" role="group">
-                <button class="mdc-segmented-button__segment mdc-segmented-button__segment--selected" aria-pressed="true" data-segment-id="baseline0">
-                    <div class="mdc-segmented-button__ripple"></div>
+                <button class="mdc-segmented-button__segment mdc-segmented-button__segment--selected mdc-segmented-button__segment--first" aria-pressed="true" data-segment-id="baseline0">
                     <div class="mdc-segmented-button__label">Segment</div>
                 </button>
                 <button class="mdc-segmented-button__segment" aria-pressed="false" data-segment-id="baseline1">
-                    <div class="mdc-segmented-button__ripple"></div>
                     <div class="mdc-segmented-button__label">Segment</div>
                 </button>
-                <button class="mdc-segmented-button__segment" aria-pressed="false" data-segment-id="baseline2">
-                    <div class="mdc-segmented-button__ripple"></div>
+                <button class="mdc-segmented-button__segment mdc-segmented-button__segment--last" aria-pressed="false" data-segment-id="baseline2">
                     <div class="mdc-segmented-button__label">Segment</div>
                 </button>
             </div>
@@ -57,28 +54,19 @@ THE SOFTWARE.
         </td>
         <td>
             <div class="mdc-segmented-button" role="group">
-                <!-- <div class="mdc-touch-target-wrapper"> -->
-                    <button class="mdc-segmented-button__segment mdc-segmented-button--touch" aria-pressed="false">
-                        <div class="mdc-segmented-button__ripple"></div>
-                        <i class="material-icons mdc-segmented-button__icon">favorite</i>
-                        <div class="mdc-segmented-button__touch"></div>
-                    </button>
-                <!-- </div> -->
-                <!-- <div class="mdc-touch-target-wrapper"> -->
-                    <button class="mdc-segmented-button__segment mdc-segmented-button--touch" aria-pressed="false" data-segment-id="multi-text">
-                        <div class="mdc-segmented-button__ripple"></div>
-                        <div class="mdc-segmented-button__label">Text</div>
-                        <div class="mdc-segmented-button__touch"></div>
-                    </button>
-                <!-- </div> -->
-                <!-- <div class="mdc-touch-target-wrapper"> -->
-                    <button class="mdc-segmented-button__segment mdc-segmented-button--touch" aria-pressed="false">
-                        <div class="mdc-segmented-button__ripple"></div>
-                        <i class="material-icons mdc-segmented-button__icon">android</i>
-                        <div class="mdc-segmented-button__label">Label</div>
-                        <div class="mdc-segmented-button__touch"></div>
-                    </button>
-                <!-- </div> -->
+                <button class="mdc-segmented-button__segment mdc-segmented-button--touch mdc-segmented-button__segment--first" aria-pressed="false">
+                    <div class="mdc-segmented-button__ripple"></div>
+                    <i class="material-icons mdc-segmented-button__icon">favorite</i>
+                </button>
+                <button class="mdc-segmented-button__segment mdc-segmented-button--touch" aria-pressed="false" data-segment-id="multi-text">
+                    <div class="mdc-segmented-button__ripple"></div>
+                    <div class="mdc-segmented-button__label">Text</div>
+                </button>
+                <button class="mdc-segmented-button__segment mdc-segmented-button--touch mdc-segmented-button__segment--last" aria-pressed="false">
+                    <div class="mdc-segmented-button__ripple"></div>
+                    <i class="material-icons mdc-segmented-button__icon">android</i>
+                    <div class="mdc-segmented-button__label">Label</div>
+                </button>
             </div>
         </td>
     </tr>
@@ -88,28 +76,28 @@ THE SOFTWARE.
         </td>
         <td>
             <div class="mdc-segmented-button mdc-segmented-button--single-select" role="radiogroup" aria-labelledby="single-header">
-                <!-- <div class="mdc-touch-target-wrapper"> -->
-                    <button class="mdc-segmented-button__segment mdc-segmented-button--touch" role="radio" aria-checked="false" data-segment-id="single-favorite">
+                <div class="mdc-touch-target-wrapper">
+                    <button class="mdc-segmented-button__segment mdc-segmented-button--touch mdc-segmented-button__segment--first" role="radio" aria-checked="false" data-segment-id="single-favorite">
                         <div class="mdc-segmented-button__ripple"></div>
                         <i class="material-icons mdc-segmented-button__icon">favorite</i>
                         <div class="mdc-segmented-button__touch"></div>
                     </button>
-                <!-- </div> -->
-                <!-- <div class="mdc-touch-target-wrapper"> -->
+                </div>
+                <div class="mdc-touch-target-wrapper">
                     <button class="mdc-segmented-button__segment mdc-segmented-button--touch" role="radio" aria-checked="false">
                         <div class="mdc-segmented-button__ripple"></div>
                         <div class="mdc-segmented-button__label">Text</div>
                         <div class="mdc-segmented-button__touch"></div>
                     </button>
-                <!-- </div> -->
-                <!-- <div class="mdc-touch-target-wrapper"> -->
-                    <button class="mdc-segmented-button__segment mdc-segmented-button--touch" role="radio" aria-checked="false" data-segment-id="single-android">
+                </div>
+                <div class="mdc-touch-target-wrapper">
+                    <button class="mdc-segmented-button__segment mdc-segmented-button--touch mdc-segmented-button__segment--last" role="radio" aria-checked="false" data-segment-id="single-android">
                         <div class="mdc-segmented-button__ripple"></div>
                         <i class="material-icons mdc-segmented-button__icon">android</i>
                         <div class="mdc-segmented-button__label">Label</div>
                         <div class="mdc-segmented-button__touch"></div>
                     </button>
-                <!-- </div> -->
+                </div>
             </div>
         </td>
     </tr>
