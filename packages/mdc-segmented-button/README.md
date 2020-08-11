@@ -218,16 +218,16 @@ Property | Value Type | Description
 --- | --- | ---
 `index` | `number` | The index of the segment.
 `selected` | `boolean` | The segment's selected state.
-`segmentId?` | `string | undefined` | The segment's segmentId, if provided.
+`segmentId?` | `string \| undefined` | The segment's segmentId, if provided.
 
 ### `MDCSegmentedButton`
 
 Method Signature | Description
 --- | ---
 `getSelectedSegments() => readonly SegmentDetail[]` | Proxies to foundation's `getSelectedSegments` method.
-`selectSegment(indexOrSegmentId: number | string) => void` | Proxies to foundation's `selectSegment` method.
-`unselectSegment(indexOrSegmentId: number | string) => void` | Proxies to foundation's `unselectSegment` method.
-`isSegmentSelected(indexOrSegmentId: number | string) => boolean` | Proxies to foundation's `isSegmentSelected` method.
+`selectSegment(indexOrSegmentId: number \| string) => void` | Proxies to foundation's `selectSegment` method.
+`unselectSegment(indexOrSegmentId: number \| string) => void` | Proxies to foundation's `unselectSegment` method.
+`isSegmentSelected(indexOrSegmentId: number \| string) => boolean` | Proxies to foundation's `isSegmentSelected` method.
 
 Property | Value Type | Description
 --- | --- | ---
@@ -249,7 +249,7 @@ Method Signature | Description
 `isSelected() => boolean` | Proxies to foundation's `isSelected` method.
 `setSelected() => void` | Proxies to foundation's `setSelected` method.
 `setUnselected() => void` | Proxies to foundation's `setUnselected` method.
-`getSegmentId() => string | undefined` | Proxies to foundation's `getSegmentId` method.
+`getSegmentId() => string \| undefined` | Proxies to foundation's `getSegmentId` method.
 
 #### Events
 
@@ -271,8 +271,8 @@ Method Signature | Description
 --- | ---
 `hasClass(className: string) => boolean` | Returns true if segmented button has className, otherwise returns false.
 `getSegments() => readonly SegmentDetail[]` | Returns child segments represented as a readonly list of SegmentDetails.
-`selectSegment(indexOrSegmentId: number | string) => void` | Sets identified segment to be selected.
-`unselectSegment(indexOrSegmentId: number | string) => void` | Set identified segment to be not selected.
+`selectSegment(indexOrSegmentId: number \| string) => void` | Sets identified segment to be selected.
+`unselectSegment(indexOrSegmentId: number \| string) => void` | Set identified segment to be not selected.
 `notifySelectedChange(detail: SegmentDetail) => void` | Notifies the client about the changed segment with a `change` event.
 
 >_NOTE_: `notifySelectedChange` must pass along a `SegmentDetail` representing the potentially changed Segment, and must be observable by the client (e.g. via DOM event bubbling).
@@ -282,7 +282,7 @@ Method Signature | Description
 Method Signature | Description
 --- | ---
 `isSingleSelect() => boolean` | Returns true if wrapping segmented button is single select, otherwise returns false.
-`getAttr(attrName: string) => string | null` | Returns root element's attribute if it is set, otherwise returns null.
+`getAttr(attrName: string) => string \| null` | Returns root element's attribute if it is set, otherwise returns null.
 `setAttr(attrName: string, value: string) => void` | Sets root element's attribute value to `value`.
 `addClass(className: string) => void` | Adds class to the root element.
 `removeClass(className: string) => void` | Removes class from the root element.
@@ -297,10 +297,10 @@ Method Signature | Description
 
 Method Signature | Description
 --- | ---
-`selectSegment(indexOrSegmentId: number | string) => void` | Sets identified segment to be selected.
-`unselectSegment(indexOrSegmentId: number | string) => void` | Set identified segment to be not selected.
+`selectSegment(indexOrSegmentId: number \| string) => void` | Sets identified segment to be selected.
+`unselectSegment(indexOrSegmentId: number \| string) => void` | Set identified segment to be not selected.
 `getSelectedSegments() => readonly SegmentDetail[]` | Returns selected segments as readonly list of SegmentDetails.
-`isSegmentSelected(indexOrSegmentId: number | string) => boolean` | Returns true if identified segment is selected, otherwise returns false.
+`isSegmentSelected(indexOrSegmentId: number \| string) => boolean` | Returns true if identified segment is selected, otherwise returns false.
 `isSingleSelect() => boolean` | Returns true if segmented button is single select, otherwise returns false.
 `handleSelected(detail: SegmentDetail) => void` | Handles a `selected` event. Maintains single select restrictions, if applicable, and notifies client.
 
@@ -320,7 +320,7 @@ Method Signature | Description
 `isSelected() => void` | Returns true if segment is currently selected.
 `setSelected() => void` | Sets segment to be selected.
 `setUnselected() => void` | Sets segment to be not selected.
-`getSegmentId() => string | undefined` | Returns segment's segmentId if it was provided, otherwise return undefined.
+`getSegmentId() => string \| undefined` | Returns segment's segmentId if it was provided, otherwise return undefined.
 `handleClick() => void` | Handles a `click` event. Changes selected state if able (due to single select) and notifies Segmented Button.
 
 #### `MDCSegmentedButtonSegmentFoundation` Event Handlers
