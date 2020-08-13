@@ -25,6 +25,15 @@ import {MDCFoundation} from '@material/base/foundation';
 import {MDCSegmentedButtonSegmentAdapter} from './adapter';
 import {cssClasses, strings} from './constants';
 
+const emptyClientRect = {
+  bottom: 0,
+  height: 0,
+  left: 0,
+  right: 0,
+  top: 0,
+  width: 0
+};
+
 export class MDCSegmentedButtonSegmentFoundation extends MDCFoundation<MDCSegmentedButtonSegmentAdapter> {
   static get defaultAdapter(): MDCSegmentedButtonSegmentAdapter {
     return {
@@ -35,7 +44,7 @@ export class MDCSegmentedButtonSegmentFoundation extends MDCFoundation<MDCSegmen
       removeClass: () => undefined,
       hasClass: () => false,
       notifySelectedChange: () => undefined,
-      getRootBoundingClientRect: () => new ClientRect()
+      getRootBoundingClientRect: () => emptyClientRect
     }
   }
 
@@ -57,8 +66,8 @@ export class MDCSegmentedButtonSegmentFoundation extends MDCFoundation<MDCSegmen
     this.setAriaAttr(strings.FALSE);
   }
 
-  getSegmentId(): string | null {
-    return this.adapter.getAttr(strings.DATA_SEGMENT_ID);
+  getSegmentId(): string | undefined {
+    return this.adapter.getAttr(strings.DATA_SEGMENT_ID) ?? undefined;
   }
 
   handleClick(): void {

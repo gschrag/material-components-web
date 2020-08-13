@@ -1,118 +1,113 @@
+//
+// Copyright 2020 Google Inc.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+//
 
 // Core: Define complete styles to render component segment, including base and theme styles
 
-@use "@material/feature-targeting/functions" as feature-targeting-functions;
-@use "@material/feature-targeting/mixins" as feature-targeting-mixins;
-@use "@material/typography/mixins" as typography-mixins;
-@use "@material/ripple/mixins" as ripple-mixins;
-@use "@material/touch-target/mixins" as touch-target-mixins;
-@use "@material/elevation/mixins" as elevation-mixins;
-@use "@material/density/functions" as density-functions;
-@use "@material/density/variables" as density-variables;
-@use "@material/theme/mixins" as theme-mixins;
-@use "@material/shape/mixins" as shape-mixins;
+@use '@material/feature-targeting/feature-targeting';
+@use '@material/typography/typography';
+@use '@material/touch-target/touch-target';
+@use '@material/elevation/elevation';
+@use '@material/elevation/elevation-theme';
 @use './segment-theme';
 
-$ripple-target: '.mdc-segmented-button__ripple';
+@mixin core-styles($query: feature-targeting.all()) {
+  $feat-animation: feature-targeting.create-target($query, animation);
+  $feat-color: feature-targeting.create-target($query, color);
+  $feat-structure: feature-targeting.create-target($query, structure);
 
-@mixin core-styles($query: feature-targeting-functions.all()) {
-  @include without-ripple($query);
-  @include ripple($query);
-}
-
-@mixin without-ripple($query: feature-targeting-functions.all()) {
-  $feat-animation: feature-targeting-functions.create-target($query, animation);
-  $feat-color: feature-targeting-functions.create-target($query, color);
-  $feat-structure: feature-targeting-functions.create-target($query, structure);
-
-  @include touch-target-mixins.wrapper($query);
-  @include elevation-mixins.overlay-common($query);
+  @include touch-target.wrapper($query);
+  @include elevation.overlay-common($query);
 
   .mdc-segmented-button__segment {
     @include base($query);
-    @include unselected($query);
+    @include _unselected($query);
 
     &:hover {
-      @include feature-targeting-mixins.targets($feat-structure) {
+      @include feature-targeting.targets($feat-structure) {
         cursor: pointer;
       }
     }
 
-    // TODO: verify that this is still needed (cancels ripple focus border)
+    // Removes ripple's focus outline
     &:focus {
-      @include feature-targeting-mixins.targets($feat-structure) {
+      @include feature-targeting.targets($feat-structure) {
         outline-width: 0;
       }
     }
 
-    // TODO: this CSS doesn't work if the buttons are wrapped by divs
     &:first-child {
-      @include feature-targeting-mixins.targets($feat-structure) {
-        border-radius: segment-theme.$border-radius 0px 0px
+      @include feature-targeting.targets($feat-structure) {
+        border-radius: segment-theme.$border-radius 0 0
           segment-theme.$border-radius;
       }
     }
 
     &:last-child {
-      @include feature-targeting-mixins.targets($feat-structure) {
-        border-right-width: 1px;
-        border-radius: 0px segment-theme.$border-radius
-          segment-theme.$border-radius 0px;
+      @include feature-targeting.targets($feat-structure) {
+        border-right-width: segment-theme.$border-width;
+        border-radius: 0 segment-theme.$border-radius
+          segment-theme.$border-radius 0;
       }
     }
 
-    .mdc-segmented-button__touch {
-      @include touch-target-mixins.touch-target($query: $query);
+    .mdc-segmented-button__segment__touch {
+      @include touch-target.touch-target($query: $query);
     }
 
-    .mdc-segmented-button--touch {
-      @include touch-target-mixins.margin(
-        $component-height: 32px,
+    .mdc-segmented-button__segment--touch {
+      @include touch-target.margin(
+        $component-height: segment-theme.$touch-target-height,
         $query: $query
       );
     }
   }
 
-  // .mdc-segmented-button__segment--first {
-  //   @include feature-targeting-mixins.targets($feat-structure) {
-  //     border-radius: segment-theme.$border-radius 0px 0px
-  //       segment-theme.$border-radius;
-  //   }
-  // }
-  
-  // .mdc-segmented-button__segment--last {
-  //   @include feature-targeting-mixins.targets($feat-structure) {
-  //     border-right-width: 1px;
-  //     border-radius: 0px segment-theme.$border-radius
-  //       segment-theme.$border-radius 0px;
-  //   }
-  // }
+  // Style for when element is selected
+  .mdc-segmented-button__segment--selected {
+    @include _selected($query);
+  }
 
+  // maintains visual design when inside a touch-target-wrapper
+  // This could also be accomplished with --first/--last classes
   .mdc-touch-target-wrapper {
     .mdc-segmented-button__segment {
-      border-radius: 0px 0px 0px 0px;
+      border-radius: 0;
       border-right-width: 0;
     }
 
     &:first-child .mdc-segmented-button__segment {
-      @include feature-targeting-mixins.targets($feat-structure) {
-        border-radius: segment-theme.$border-radius 0px 0px
+      @include feature-targeting.targets($feat-structure) {
+        border-radius: segment-theme.$border-radius 0 0
           segment-theme.$border-radius;
       }
     }
-  
+
     &:last-child .mdc-segmented-button__segment {
-      @include feature-targeting-mixins.targets($feat-structure) {
-        border-right-width: 1px;
-        border-radius: 0px segment-theme.$border-radius
-          segment-theme.$border-radius 0px;
+      @include feature-targeting.targets($feat-structure) {
+        border-right-width: segment-theme.$border-width;
+        border-radius: 0 segment-theme.$border-radius
+          segment-theme.$border-radius 0;
       }
     }
-  }
-  
-  // Style for when element is selected
-  .mdc-segmented-button__segment--selected {
-    @include selected($query);
   }
 
   .mdc-segmented-button__icon {
@@ -124,161 +119,64 @@ $ripple-target: '.mdc-segmented-button__ripple';
   }
 }
 
-@mixin ripple($query: feature-targeting-functions.all()) {
-  @include ripple-mixins.common($query);
-  $feat-structure: feature-targeting-functions.create-target($query, structure);
+@mixin base($query: feature-targeting.all()) {
+  $feat-structure: feature-targeting.create-target($query, structure);
 
-  .mdc-segmented-button__segment {
-    @include ripple-mixins.surface(
-      $query: $query,
-      $ripple-target: $ripple-target
-    );
-    @include ripple-mixins.radius-bounded(
-      $query: $query,
-      $ripple-target: $ripple-target
-    );
-    @include ink-color-ripple(segment-theme.$selected-ink-color, $query: $query);
-
-    #{$ripple-target} {
-      @include ripple-mixins.target-common($query: $query);
-    }
-
-    @include feature-targeting-mixins.targets($feat-structure) {
-      overflow: hidden;
-    }
-  }
-}
-
-@mixin base($query: feature-targeting-functions.all()) {
-  $feat-structure: feature-targeting-functions.create-target($query, structure);
-
-  @include fill-color(segment-theme.$unselected-container-fill-color, $query: $query);
-  @include typography-mixins.typography(body2, $query: $query);
-  @include density($density-scale: 0, $query: $query);
-  @include elevation-mixins.overlay-surface-position($query: $query);
-  @include elevation-mixins.overlay-dimensions(100%, $query: $query);
-  @include typography-mixins.typography(button, $query);
-  @include segment-theme.outline-color(
-    segment-theme.$unselected-outline-color,
-    $query
-  );
-
-  @include feature-targeting-mixins.targets($feat-structure) {
+  // elevation mixins contain ripple effect to segment boundaries
+  @include elevation-theme.overlay-surface-position($query: $query);
+  @include elevation-theme.overlay-dimensions(100%, $query: $query);
+  @include typography.typography(button, $query);
+  @include segment-theme.outline-color(segment-theme.$outline-color, $query);
+  @include feature-targeting.targets($feat-structure) {
     display: inline-flex;
     vertical-align: top;
     align-items: center;
     height: segment-theme.$height;
     min-width: segment-theme.$min-width;
-    padding: 0px segment-theme.$horizontal-padding;
-    // Avoids double borders
+    padding: 0 segment-theme.$horizontal-padding;
     border-width: segment-theme.$border-width 0 segment-theme.$border-width
       segment-theme.$border-width;
   }
 }
 
-@mixin unselected($query: feature-targeting-functions.all()) {
-  @include segment-theme.ink-color(segment-theme.$unselected-ink-color, $query);
-  @include segment-theme.container-fill-color(
+@mixin _unselected($query: feature-targeting.all()) {
+  @include segment-theme.unselected-ink-color(
+    segment-theme.$unselected-ink-color,
+    $query
+  );
+  @include segment-theme.unselected-container-fill-color(
     segment-theme.$unselected-container-fill-color,
     $query
   );
 }
 
-@mixin selected($query: feature-targeting-functions.all()) {
-  @include segment-theme.ink-color(segment-theme.$selected-ink-color, $query);
-  @include segment-theme.container-fill-color(
+@mixin _selected($query: feature-targeting.all()) {
+  @include segment-theme.selected-ink-color(
+    segment-theme.$selected-ink-color,
+    $query
+  );
+  @include segment-theme.selected-container-fill-color(
     segment-theme.$selected-container-fill-color,
     $query
   );
 }
 
-@mixin icon($query: feature-targeting-functions.all()) {
-  $feat-structure: feature-targeting-functions.create-target($query, structure);
-  $feat-typography: feature-targeting-functions.create-target(
-    $query,
-    typography
-  );
+@mixin icon($query: feature-targeting.all()) {
+  $feat-structure: feature-targeting.create-target($query, structure);
+  $feat-typography: feature-targeting.create-target($query, typography);
 
-  @include feature-targeting-mixins.targets($feat-structure) {
+  @include feature-targeting.targets($feat-structure) {
     width: segment-theme.$icon-width;
   }
-  @include feature-targeting-mixins.targets($feat-typography) {
+  @include feature-targeting.targets($feat-typography) {
     font-size: segment-theme.$icon-font-size;
   }
 }
 
-@mixin label($query: feature-targeting-functions.all()) {
-  $feat-structure: feature-targeting-functions.create-target($query, structure);
+@mixin label($query: feature-targeting.all()) {
+  $feat-structure: feature-targeting.create-target($query, structure);
 
-  @include feature-targeting-mixins.targets($feat-structure) {
+  @include feature-targeting.targets($feat-structure) {
     padding-left: segment-theme.$label-padding;
-  }
-}
-
-@mixin density($density-scale, $query: feature-targeting-functions.all()) {
-  $height: density-functions.prop-value(
-    $density-config: (height: (
-      default: 32px,
-      maximum: 32px,
-      minimum: 24px
-    )),
-    $density-scale: density-variables.$default-scale,
-    $property-name: height
-  );
-
-  @include height($height, $query: $query);
-}
-
-@mixin fill-color($color, $query: feature-targeting-functions.all()) {
-  $feat-color: feature-targeting-functions.create-target($query, color);
-
-  @include feature-targeting-mixins.targets($feat-color) {
-    @include theme-mixins.prop(background-color, $color);
-  }
-}
-
-@mixin height($height, $query: feature-targeting-functions.all()) {
-  $feat-structure: feature-targeting-functions.create-target($query, structure);
-
-  @include feature-targeting-mixins.targets($feat-structure) {
-    height: $height;
-  }
-}
-
-@mixin ink-color-ripple($color, $query) {
-  @include ripple-mixins.states(
-    $color,
-    true,
-    $query: $query,
-    $ripple-target: $ripple-target
-  );
-}
-
-@mixin shape-radius(
-  $radius,
-  $rtl-reflexive: false,
-  $density-scale: density-variables.$default-scale,
-  $query: feature-targeting-functions.all()
-) {
-  $height: density-functions.prop-value(
-    $density-config: (height: (default: 32px, maximum: 32px, minimum: 24px)),
-    $density-scale: $density-scale,
-    $property-name: height
-  );
-
-  @include shape-mixins.radius(
-    $radius,
-    $rtl-reflexive,
-    $component-height: $height,
-    $query: $query
-  );
-
-  #{$ripple-target} {
-    @include shape-mixins.radius(
-      $radius,
-      $rtl-reflexive,
-      $component-height: $height,
-      $query: $query
-    );
   }
 }

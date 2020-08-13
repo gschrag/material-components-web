@@ -1,0 +1,31 @@
+@use '@material/feature-targeting/feature-targeting';
+@use '@material/ripple/ripple';
+@use '@material/ripple/ripple-theme';
+@use './segment-theme';
+
+$ripple-target: '.mdc-segmented-button__ripple';
+
+@mixin ripple($query: feature-targeting.all()) {
+  $feat-structure: feature-targeting.create-target($query, structure);
+
+  .mdc-segmented-button__segment {
+    @include ripple.surface($query: $query, $ripple-target: $ripple-target);
+    @include ripple.radius-bounded(
+      $query: $query,
+      $ripple-target: $ripple-target
+    );
+    @include ripple-theme.states(
+      segment-theme.$selected-ink-color,
+      true,
+      $query: $query,
+      $ripple-target: $ripple-target
+    );
+    @include feature-targeting.targets($feat-structure) {
+      overflow: hidden;
+    }
+
+    #{$ripple-target} {
+      @include ripple.target-common($query: $query);
+    }
+  }
+}

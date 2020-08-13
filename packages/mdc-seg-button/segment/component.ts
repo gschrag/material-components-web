@@ -139,7 +139,7 @@ export class MDCSegmentedButtonSegment extends MDCComponent<MDCSegmentedButtonSe
     return this.foundation.setUnselected();
   }
 
-  getSegmentId(): string | null {
+  getSegmentId(): string | undefined {
     return this.foundation.getSegmentId();
   }
 }
