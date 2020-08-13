@@ -60,12 +60,16 @@ export class MDCSegmentedButton extends MDCComponent<MDCSegmentedButtonFoundatio
         this.foundation.handleSelected(event.detail);
     this.listen(strings.SELECTED_EVENT, this.handleSelected);
 
-    // foundation is undefined in #instantiateSegments
     const isSingleSelect = this.foundation.isSingleSelect();
+    let segmentSelected = false;
     this.segments_.forEach((segment, index: number) => {
       segment.setIndex(index);
       segment.setIsSingleSelect(isSingleSelect);
+      segmentSelected = segmentSelected || segment.isSelected();
     });
+    if (isSingleSelect && !segmentSelected && this.segments_.length > 0) {
+      this.segments_[0].setSelected();
+    }
   }
 
   destroy() {
