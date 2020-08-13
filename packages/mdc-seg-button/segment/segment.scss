@@ -37,9 +37,12 @@
   @include touch-target.wrapper($query);
   @include elevation.overlay-common($query);
 
+  @include _unselected($query);
+  @include _selected($query);
+  @include segment-theme.outline-color(segment-theme.$outline-color, $query);
+
   .mdc-segmented-button__segment {
     @include base($query);
-    @include _unselected($query);
 
     &:hover {
       @include feature-targeting.targets($feat-structure) {
@@ -81,10 +84,10 @@
     }
   }
 
-  // Style for when element is selected
-  .mdc-segmented-button__segment--selected {
-    @include _selected($query);
-  }
+  // // Style for when element is selected
+  // .mdc-segmented-button__segment--selected {
+  //   @include _selected($query);
+  // }
 
   // maintains visual design when inside a touch-target-wrapper
   // This could also be accomplished with --first/--last classes
@@ -126,7 +129,7 @@
   @include elevation-theme.overlay-surface-position($query: $query);
   @include elevation-theme.overlay-dimensions(100%, $query: $query);
   @include typography.typography(button, $query);
-  @include segment-theme.outline-color(segment-theme.$outline-color, $query);
+  // @include segment-theme.outline-color(segment-theme.$outline-color, $query);
   @include feature-targeting.targets($feat-structure) {
     display: inline-flex;
     vertical-align: top;
