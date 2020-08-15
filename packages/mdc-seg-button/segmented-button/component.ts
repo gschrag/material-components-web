@@ -67,11 +67,10 @@ export class MDCSegmentedButton extends MDCComponent<MDCSegmentedButtonFoundatio
     });
 
     const selectedSegments = this.segments_.filter((segment) => segment.isSelected());
-    for (let i = 1; i < selectedSegments.length; i++) {
-      selectedSegments[i].setUnselected();
-    }
     if (isSingleSelect && selectedSegments.length == 0 && this.segments_.length > 0) {
-      this.segments_[0].setSelected();
+      throw new Error('No segment selected in singleSelect mdc-segmented-button');
+    } else if (isSingleSelect && selectedSegments.length > 1) {
+      throw new Error('Multiple segments selected in singleSelect mdc-segmented-button');
     }
   }
 
